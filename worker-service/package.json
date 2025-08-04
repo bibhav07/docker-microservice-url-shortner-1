@@ -1,0 +1,12 @@
+{
+  "name": "worker-service",
+  "version": "1.0.0",
+  "main": "worker.js",
+  "scripts": {
+    "start": "node worker.js"
+  },
+  "dependencies": {
+    "pg": "8.16.3",
+    "redis": "5.7.0"
+  }
+}

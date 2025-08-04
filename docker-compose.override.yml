@@ -1,0 +1,24 @@
+services:
+  url-service:
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+
+  stats-service:
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=development
+
+  worker-service:
+    environment:
+      - NODE_ENV=development
+
+  postgres:
+    ports:
+      - "9999:5432"
+
+  redis:
+    ports:
+      - "6379:6379"

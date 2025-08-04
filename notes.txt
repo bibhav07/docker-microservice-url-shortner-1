@@ -1,0 +1,12 @@
+| Service                 | Responsibility                                                 |
+| ----------------------- | -------------------------------------------------------------- |
+| **API Gateway (NGINX)** | Routes `/shorten` to URL-service and `/stats` to Stats-service |
+| **URL-Service**         | Creates short URLs, stores in Postgres                         |
+| **Stats-Service**       | Tracks how many times a URL was hit (writes to Redis)          |
+| **Worker-Service**      | Moves Redis Stats into Postgres (batch processing)             |
+| **Frontend (Optional)** | A minimal UI in React or plain HTML                            |
+
+| Environment | Command                                                                             | Access Pattern                                       |
+| ----------- | ----------------------------------------------------------------------------------- | ---------------------------------------------------- |
+| DEV         | `docker-compose --env-file .env.dev up --build` this will run base docker compose and then docker override  OR `docker-compose -f docker-compose.yml -f docker-compose.override.yml up --build -d` | `localhost:3000`, `localhost:3001`, `localhost:9999` |
+| PROD        | `docker-compose --env-file .env.dev -f docker-compose.yml up --build -d`                                | `localhost/shorten/abc`, `localhost/stats/code/abc`  |
